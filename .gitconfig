@@ -1,0 +1,13 @@
+[user]
+  name = Jeff Clement
+  email = jeffclement@gmail.com
+[core]
+  editor = vim
+[diff]
+    tool = vimdiff
+[alias]
+    co = checkout
+    st = status
+[http]
+[https]
+[url "http://"]
