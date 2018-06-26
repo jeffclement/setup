@@ -3,11 +3,15 @@
   email = jeffclement@gmail.com
 [core]
   editor = vim
+  pager = less -i
 [diff]
     tool = vimdiff
 [alias]
     co = checkout
     st = status
+    branches = branch -a
+    glog = log --graph
+    root = rev-parse --show-toplevel
 [http]
 [https]
 [url "http://"]

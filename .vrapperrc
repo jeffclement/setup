@@ -1,12 +1,7 @@
-echo "vimrc file in C:\\Users\\Jeff" 
-
 " Use Pathogen plugin
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+"runtime bundle/vim-pathogen/autoload/pathogen.vim
+"call pathogen#infect()
 " :call pathogen#helptags() to generate all helptags
-
-"Vim sessions default to capturing all global options, which includes the 'runtimepath' that pathogen.vim manipulates. This can cause other problems too, so I recommend turning that behavior off:
-set sessionoptions-=options
 
 "source $VIMRUNTIME/macros/matchit.vim
 
@@ -43,44 +38,8 @@ set smartcase
 set autoindent
 
 "When enabled, the ruler is displayed on the right side of the status line at the bottom of the window. By default, it displays the line number, the column number, the virtual column number, and the relative position of the cursor in the file (as a percentage).
-"This makes vim show the current row and column at the bottom right of the screen. (if status line isn't enabled?)
-"set ruler
-
-" enable status line
-set laststatus=2
-
-" Emulate standard status line with 'ruler' set
-"set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
-
-set statusline=
-" changes background
-set statusline+=%#PmenuSel#
-" grabs git branch of file
-set statusline+=%{StatuslineGit()}
-set statusline+=%#LineNr#
-" filename
-set statusline+=\ %f
-set statusline+=%m\
-set statusline+=%=
-" changes background
-set statusline+=%#CursorColumn#
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
-" percentage in file
-set statusline+=\ %p%%
-" line and column in file
-set statusline+=\ %l:%c
-set statusline+=\ 
+"This makes vim show the current row and column at the bottom right of the screen.
+set ruler
 
 set number  " show line numbers
 
@@ -91,13 +50,7 @@ set smartindent
 " a combination of spaces and tabs are used to simulate tab stops at a width other than the (hard)tabstop "set softtabstop=4"
 " size of an "indent" "set shiftwidth=4"
 "'expandtab' always uses spaces instead of tab characters
-set ts=2 sts=2 sw=2 expandtab
-
-" Word wrapping; most already default it on but some don't
-set wrap
-
-" word wrapping on vim diffs
-"autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+set ts=4 sts=4 sw=4 expandtab
 
 "Shows tabs (^l) and end of line ($)
 set list  " show hidden characters
@@ -132,10 +85,9 @@ syntax on
 " Also load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
 
-set cursorline
-
 if v:version > 700
     "Simply putting :set cursorline in your vimrc will highlight the current line in every window and update the highlight as the cursor moves.
+    set cursorline
     hi CursorLine guibg=grey5
 endif
 
@@ -200,8 +152,8 @@ nnoremap <f3> ggnzz
 nnoremap <Leader>a ggVG
 
 " Move within wrapped lines
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 " Keep selection after indent
 vnoremap < <gv
@@ -227,7 +179,7 @@ inoremap <c-]> <c-r>"
 inoremap <c-\> <c-r>*
 
 " Use normal regex
-nnoremap / /\v
+"nnoremap / /\v
 
 " Change to directory of current file
 nnoremap <silent> <leader>pwd :cd %:h<cr>:pwd<cr>
@@ -266,8 +218,6 @@ nnoremap <leader>res :source ~/.vimsession.vim<cr>
 "  endif
 "endfunction
 "inoremap <Tab> <C-R>=CleverTab()<CR>
-"
-"
 
 function! Smart_TabComplete()
   let line = getline('.')                         " current line
@@ -290,23 +240,4 @@ function! Smart_TabComplete()
   endif
 endfunction
 
-inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-
-function! s:ExecuteInShell(command)
-  let command = join(map(split(a:command), 'expand(v:val)'))
-  let winnr = bufwinnr('^' . command . '$')
-  silent! execute  winnr < 0 ? 'botright new ' . fnameescape(command) : winnr . 'wincmd w'
-  setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap number
-  echo 'Execute ' . command . '...'
-  silent! execute 'silent %!'. command
-  silent! execute 'resize ' . line('$')
-  silent! redraw
-  silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
-  silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
-  echo 'Shell command ' . command . ' executed.'
-endfunction
-command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
-ca shell Shell
-
-"command! -complete=file -nargs=* Git call s:RunShellCommand('git '.<q-args>)
-command! -complete=file -nargs=* Hg  call s:RunShellCommand('hg '.<q-args>)
+"inoremap <tab> <c-r>=Smart_TabComplete()<CR>
