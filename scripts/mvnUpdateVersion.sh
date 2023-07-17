@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script recursively changes all of the versions of a git repository
+
 NEW_VERSION=$1
 echo "NEW_VERSION=${NEW_VERSION}"
 
