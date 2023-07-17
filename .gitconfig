@@ -2,16 +2,55 @@
   name = Jeff Clement
   email = jeffclement@gmail.com
 [core]
+  excludesfile = /home/jeff/.gitignore
   editor = vim
   pager = less -i
+  # has display problems, see man pages
+  #pager = less -r -i
 [diff]
-    tool = vimdiff
+  #excludesfile = /home/jeff/.gitignore
+  #diff tool used with `git difftool`
+  tool = vimdiff
+  renameLimit = 1000 #added due to a warning when merging. merge.renameLimit points to diff.renameLimit if it's not specified. See git-scm.com/docs/git-merge
+[difftool]
+  prompt = false
+[merge]
+  tool = vimdiff
 [alias]
-    co = checkout
-    st = status
-    branches = branch -a
-    glog = log --graph
-    root = rev-parse --show-toplevel
+  d = diff
+  ds = diff --staged
+  dt = difftool
+  co = checkout
+  st = status
+  branches = branch -a
+  glog = log --all --graph --decorate --source
+  root = rev-parse --show-toplevel
+  #show commits not pushed (almost; not when merging to master?)
+  out = log --branches --decorate --source --not --remotes=origin
+  #show commits going to master when merging to master from branch??
+  outm = log origin/master..master
+
+  #no pager commits not pushed
+  npout = !git --no-pager log --branches --decorate --source --not --remotes=origin
+  # no commit merge and no fast forward
+  ncmerge = merge --no-commit --no-ff
+  # show all heads
+  heads = show-ref --heads 
+  tags = show-ref --tags 
+  lf = "!f() { git log --all --full-history -- "**/$1.*"; }; f"
+  #show all files in a specific branch; git lsbranch <branch name>
+  lsbranch= ls-tree -r --name-only
+  # show commits and files asssociated?
+  commitfiles=log --name-status --diff-filter=ACDMRTUXB
+  #if only want to see name and not status
+  #cf=log --name-only --diff-filter=ACDMRTUXB
+  cf=log --name-status --diff-filter=ACDMRTUXB
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[init]
+	templatedir = ~/.git_template
 [http]
 [https]
 [url "http://"]
