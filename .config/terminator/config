@@ -1,0 +1,152 @@
+[global_config]
+  geometry_hinting = True
+  inactive_color_offset = 0.807692307692
+  scroll_tabbar = True
+  title_font = Ubuntu 16
+  title_transmit_fg_color = "#eeeeec"
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 4315:246
+      size = 3200, 1835
+      title = jeff@lcc14:/shared/lcc14/disk1/home/jeff/prj/gitlab/lcc-monorepo
+      type = Window
+    [[[child1]]]
+      active_page = 0
+      labels = None, None, None, None, None, None, None, None
+      last_active_term = f211deac-b85c-43e3-827e-7ba865ba4208, f938cefd-008e-4f89-928a-52bafba5df3a, d8aa6014-d48e-41bc-b7ac-6a6aec982b8c, a4a0e6e0-1a26-48c9-8864-27d84ff6dbd6, 4614aea0-0fb4-413a-98ce-3d4983686243, 0382a0fe-a7cc-4e59-a4a3-e83429ae8673, d8041246-39fb-4ae0-93cf-fddd49224db7, 4695c43d-c686-4d89-b185-b1c6b83540c9
+      order = 0
+      parent = child0
+      type = Notebook
+    [[[terminal2]]]
+      command = pushd ~/prj; bash
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = f211deac-b85c-43e3-827e-7ba865ba4208
+    [[[terminal3]]]
+      command = pushd ~/prj; bash
+      order = 1
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = f938cefd-008e-4f89-928a-52bafba5df3a
+    [[[terminal4]]]
+      command = bash -ic "cd ~/prj/gitlab/lcc-monorepo/tessa/frontend; npm run start lcc84 14"; bash
+      order = 2
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = d8aa6014-d48e-41bc-b7ac-6a6aec982b8c
+    [[[terminal5]]]
+      command = bash -ic "ssh lcc84"; bash -ic "pwd; cd ~/prj/gitlab/lcc-monorepo/tessa/frontend"; bash
+      order = 3
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = a4a0e6e0-1a26-48c9-8864-27d84ff6dbd6
+    [[[terminal6]]]
+      command = 'CMD="ssh lcc84"; bash -c "$CMD"'
+      order = 4
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 4614aea0-0fb4-413a-98ce-3d4983686243
+    [[[terminal7]]]
+      command = 'CMD="ssh lcc84"; bash -c "$CMD"'
+      order = 5
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 0382a0fe-a7cc-4e59-a4a3-e83429ae8673
+    [[[terminal8]]]
+      command = pushd ~/prj; bash
+      order = 6
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = d8041246-39fb-4ae0-93cf-fddd49224db7
+    [[[terminal9]]]
+      command = pushd ~/prj; bash
+      order = 7
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 4695c43d-c686-4d89-b185-b1c6b83540c9
+  [[jeff]]
+    [[[child0]]]
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1487, 757
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      type = Notebook
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+    [[[terminal3]]]
+      command = ""
+      order = 1
+      parent = child1
+      profile = default
+      type = Terminal
+    [[[terminal4]]]
+      order = 2
+      parent = child1
+      profile = default
+      type = Terminal
+    [[[terminal5]]]
+      order = 3
+      parent = child1
+      profile = default
+      type = Terminal
+    [[[terminal6]]]
+      order = 4
+      parent = child1
+      profile = default
+      type = Terminal
+    [[[terminal7]]]
+      order = 5
+      parent = child1
+      profile = default
+      type = Terminal
+    [[[terminal8]]]
+      order = 6
+      parent = child1
+      profile = default
+      type = Terminal
+    [[[terminal9]]]
+      order = 7
+      parent = child1
+      profile = default
+      type = Terminal
+[plugins]
+[profiles]
+  [[default]]
+    cursor_blink = False
+    cursor_color = "#aaaaaa"
+    font = Ubuntu Mono 12
+    foreground_color = "#d3d7cf"
+    scrollback_infinite = True
+    scrollback_lines = 9999
+    use_system_font = False
+    word_chars = "-A-Za-z0-9,./?%&#:_~"
+  [[13" Laptop]]
+    cursor_blink = False
+    cursor_color = "#aaaaaa"
+    font = Ubuntu Mono 16
+    foreground_color = "#d3d7cf"
+    scrollback_infinite = True
+    use_system_font = False
